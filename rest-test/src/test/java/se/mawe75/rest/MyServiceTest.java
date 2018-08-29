@@ -16,4 +16,16 @@ public class MyServiceTest {
 		
 	}
 
+	@Test
+	public void testMessage() {
+
+		MyService service = new MyService();
+		String result = service.message();
+		
+		assertNotNull(result);
+		assertFalse(result.isEmpty());
+		
+	}
+
+	
 }

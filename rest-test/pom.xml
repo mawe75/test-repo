@@ -8,12 +8,15 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>rest-test Maven Webapp</name>
 	<url>http://maven.apache.org</url>
-	
+
 	<properties>
 		<maven.compiler.source>1.7</maven.compiler.source>
 		<maven.compiler.target>1.7</maven.compiler.target>
+
+
+		<wildfly.url.test>localhost</wildfly.url.test>
 	</properties>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -27,8 +30,32 @@
 			<version>7.0</version>
 			<scope>provided</scope>
 		</dependency>
+
 	</dependencies>
 	<build>
 		<finalName>rest-test</finalName>
+
+		<plugins>
+			<plugin>
+				<groupId>org.wildfly.plugins</groupId>
+				<artifactId>wildfly-maven-plugin</artifactId>
+				<version>1.2.2.Final</version>
+				<configuration>
+					<hostname>${wildfly.url.test}</hostname>
+					<port>9990</port>
+					<name>rest-test.war</name>
+				</configuration>
+			</plugin>
+
+			<!-- https://mvnrepository.com/artifact/org.codehaus.mojo/cobertura-maven-plugin -->
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.2</version>
+			</plugin>
+		</plugins>
+
 	</build>
+
+
 </project>
