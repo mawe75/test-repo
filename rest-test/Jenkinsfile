@@ -22,7 +22,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-            	    dir(${DIR}) {
+            	    dir("${DIR}") {
                         sh 'mvn -Dmaven.test.failure.ignore=true test'
             	    }
             }
