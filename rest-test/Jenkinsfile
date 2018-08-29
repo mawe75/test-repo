@@ -6,7 +6,7 @@ pipeline {
     }
     
     environment {
-        DIR = 'rest-test'
+        ROOT_DIR = 'rest-test'
     }
 
 
@@ -22,13 +22,13 @@ pipeline {
         }
         stage('Build') {
             steps {
-            	    dir("${DIR}") {
+            	    dir("${ROOT_DIR}") {
                         sh 'mvn -Dmaven.test.failure.ignore=true test'
             	    }
             }
             post {
                 success {
-                    junit 'target/surefire-reports/**/*.xml' 
+                    junit '${ROOT_DIR}/target/surefire-reports/**/*.xml' 
                 }
             }
         }
