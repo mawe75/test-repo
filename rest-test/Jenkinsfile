@@ -4,6 +4,10 @@ pipeline {
     tools {
         maven 'Maven_3.5.4'
     }
+    
+    environment {
+        DIR = 'rest-test'
+    }
 
 
     stages {
@@ -18,8 +22,9 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'mvn -Dmaven.test.failure.ignore=true test'
-            	 
+            	    dir(${DIR}) {
+                        sh 'mvn -Dmaven.test.failure.ignore=true test'
+            	    }
             }
             post {
                 success {
