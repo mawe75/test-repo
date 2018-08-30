@@ -40,7 +40,8 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying....'
+                echo 'Build docker image'
+            	docker.build("rest-test")
             }
         }
     }
