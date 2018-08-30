@@ -29,7 +29,7 @@ pipeline {
             post {
                 success {
                     junit '**/target/surefire-reports/**/*.xml' 
-                    jacoco(execPattern: '**/target/jacoco.exec')
+                    jacoco(execPattern: '**/target/coverage-reports/jacoco-ut.exec')
                 }
             }
         }
