@@ -41,7 +41,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Build docker image'
-            	docker.build("rest-test")
+            	script {
+					docker.build("rest-test")
+            	}
             }
         }
     }
