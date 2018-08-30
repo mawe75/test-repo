@@ -17,6 +17,18 @@ public class MyServiceTest {
 	}
 
 	@Test
+	public void testLowerCaseNull() {
+
+		MyService service = new MyService();
+		String result = service.lowerCase(null);
+		
+		assertNotNull(result);
+		assertTrue(result.isEmpty());
+		
+	}
+
+	
+	@Test
 	public void testMessage() {
 
 		MyService service = new MyService();

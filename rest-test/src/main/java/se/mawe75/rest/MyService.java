@@ -21,6 +21,10 @@ public class MyService {
 
 	@POST
 	public String lowerCase(final String message) {
+		if(message == null) {
+			return "";
+		}
 		return message.toLowerCase();
+		
 	}
 }
