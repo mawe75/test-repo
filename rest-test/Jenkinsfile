@@ -48,8 +48,9 @@ pipeline {
             	    dir("${ROOT_DIR}") {
                         sh 'mvn verify -Dskip.unit.tests -Dtest.url=docker.host.internal:8181'
             	    //docker.container('jenkins_int_test').stop()
-       				sh 'docker stop jenkins_int_test'	
-            	    }
+       				sh 'docker stop jenkins_int_test'
+       				sh 'docker rm jenkins_int_test'
+       				}
             }
         }
 
