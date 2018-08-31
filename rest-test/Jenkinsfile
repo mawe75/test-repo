@@ -12,7 +12,7 @@ pipeline {
 
     stages {
     
-	    stage ('Initialize') {
+	    stage ('Init') {
             steps {
                 sh '''
                     echo "PATH = ${PATH}"
@@ -20,7 +20,7 @@ pipeline {
                 ''' 
             }
         }
-        stage('Build') {
+        stage('Build/unittest ') {
             steps {
             	    dir("${ROOT_DIR}") {
                         sh 'mvn -Dmaven.test.failure.ignore=true package test'
@@ -33,7 +33,7 @@ pipeline {
                 }
             }
         }
-        stage('docker') {
+        stage('Docker') {
             steps {
                 echo 'Build docker image'
                 script {
@@ -42,7 +42,7 @@ pipeline {
             	}
             }
         }
-        stage('Integration-test') {
+        stage('Int-test') {
             steps {
                 echo 'Run integration tests against the docker container'
             	    dir("${ROOT_DIR}") {
