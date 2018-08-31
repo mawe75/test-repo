@@ -46,7 +46,7 @@ pipeline {
             steps {
                 echo 'Run integration tests against the docker container'
             	    dir("${ROOT_DIR}") {
-                        sh 'mvn verify -Dskip.unit.tests -Dtest.url=http:://host.docker.internal:8181'
+                        sh 'mvn verify -Dskip.unit.tests -Dtest.url=http://host.docker.internal:8181'
             	    //docker.container('jenkins_int_test').stop()
        				//sh 'docker stop jenkins_int_test'
        				//sh 'docker rm jenkins_int_test'
