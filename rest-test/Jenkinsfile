@@ -41,8 +41,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Build docker image'
-            	script {
-					docker.build("rest-test-${env.BUILD_ID}", "rest-test")
+                script {
+					def img = docker.build("rest-test-${env.BUILD_ID}", "rest-test")
+            		docker.image(img).inside()
             	}
             }
         }
