@@ -43,7 +43,7 @@ pipeline {
                 echo 'Build docker image'
                 script {
 					def img = docker.build("rest-test-${env.BUILD_ID}", "rest-test")
-            		img.withRun('-p 8181:8080')
+            		img.run('-p 8181:8080')
             	}
             }
         }
