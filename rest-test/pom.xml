@@ -44,6 +44,12 @@
 			<version>3.0.2.Final</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-jackson-provider</artifactId>
+			<version>3.0.10.Final</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>rest-test</finalName>

@@ -8,7 +8,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class MyServiceTestIT {
-
+	
 	private static final String DEFAULT_URL = "http://localhost:8181";
 	private static String TEST_SERVER_URL;
 
@@ -20,6 +20,7 @@ public class MyServiceTestIT {
 	@Test
 	public void test() {
 
+		System.out.println("Test: " + TEST_SERVER_URL);
 		Client client = ClientBuilder.newClient();
 		Response res = client.target(TEST_SERVER_URL).request("application/json").get();
 		System.out.println("respone: " + res);
