@@ -46,7 +46,7 @@ pipeline {
             steps {
                 echo 'Run integration tests against the docker container'
             	    dir("${ROOT_DIR}") {
-                        sh 'mvn verify -Dskip.unit.tests'
+                        sh 'mvn verify -Dskip.unit.tests -Dtest.url=docker.host.internal:8181'
             	    }
             }
         }
