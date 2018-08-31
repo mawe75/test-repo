@@ -38,7 +38,7 @@ pipeline {
                 echo 'Build docker image'
                 script {
 					def img = docker.build("rest-test-${env.BUILD_ID}", "rest-test")
-            		img.run('-p 8181:8080')
+            		img.run('-p 8181:8080 --name jenkins_int_test')
             	}
             }
         }
@@ -47,6 +47,8 @@ pipeline {
                 echo 'Run integration tests against the docker container'
             	    dir("${ROOT_DIR}") {
                         sh 'mvn verify -Dskip.unit.tests -Dtest.url=docker.host.internal:8181'
+            	    //docker.container('jenkins_int_test').stop()
+       				sh 'docker stop jenkins_int_test'	
             	    }
             }
         }
