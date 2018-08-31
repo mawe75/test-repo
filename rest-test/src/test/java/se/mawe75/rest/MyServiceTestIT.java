@@ -18,6 +18,11 @@ public class MyServiceTestIT {
 	@BeforeClass
 	public static void init() {
 		TEST_SERVER_URL = System.getProperty("test.url", DEFAULT_URL) + "/rest/myservice";
+	
+		if(!TEST_SERVER_URL.startsWith("http")) {
+			TEST_SERVER_URL = "http://" + TEST_SERVER_URL;
+		}
+	
 	}
 
 	@Test
