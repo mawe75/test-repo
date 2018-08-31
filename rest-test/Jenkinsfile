@@ -48,11 +48,36 @@ pipeline {
             	    dir("${ROOT_DIR}") {
                         sh 'mvn verify -Dskip.unit.tests -Dtest.url=docker.host.internal:8181'
             	    //docker.container('jenkins_int_test').stop()
-       				sh 'docker stop jenkins_int_test'
-       				sh 'docker rm jenkins_int_test'
+       				//sh 'docker stop jenkins_int_test'
+       				//sh 'docker rm jenkins_int_test'
        				}
             }
         }
 
+    }
+    
+    post {
+        always {
+            echo 'One way or another, I have finished'
+     
+     		echo 'Stop docker container'
+			sh 'docker stop jenkins_int_test'
+       		echo 'Remove docker container'
+			sh 'docker rm jenkins_int_test'
+     
+//            deleteDir() /* clean up our workspace */
+        }
+        success {
+            echo 'I succeeeded!'
+        }
+        unstable {
+            echo 'I am unstable :/'
+        }
+        failure {
+            echo 'I failed :('
+        }
+        changed {
+            echo 'Things were different before...'
+        }
     }
 }
