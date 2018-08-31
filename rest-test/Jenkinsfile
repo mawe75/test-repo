@@ -42,7 +42,7 @@ pipeline {
             steps {
                 echo 'Build docker image'
             	script {
-					docker.build("rest-test")
+					docker.build("rest-test-${env.BUILD_ID}", "rest-test")
             	}
             }
         }
