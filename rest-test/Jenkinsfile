@@ -23,7 +23,7 @@ pipeline {
         stage('Build') {
             steps {
             	    dir("${ROOT_DIR}") {
-                        sh 'mvn -Dmaven.test.failure.ignore=true test'
+                        sh 'mvn -Dmaven.test.failure.ignore=true package test'
             	    }
             }
             post {
